@@ -49,7 +49,7 @@ function TodoList() {
             <li key={`todo-${todo.id}`} className={styles.task}>
               <div className={styles.checkboxWrapper}>
                 <input type='checkbox' checked={todo.done} data-id={todo.id} onChange={handleChange} />
-                <CheckIcon />
+                
               </div>
               <p className={styles.title}>{todo.title}</p>
             </li>

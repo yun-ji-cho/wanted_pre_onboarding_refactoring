@@ -1,5 +1,9 @@
 @use '../styles/mixins/visual';
 
+.App{
+  padding : 20px;
+}
+
 .toggle{
   margin-bottom:100px;
   background: #bebdbd;
@@ -30,6 +34,8 @@
     width:50%;
     height:100%;
     left:0;
+    top: 50%;
+    transform: translateY(-50%);
     transition: left 0.2s;
     z-index:0;
   }
@@ -66,124 +72,130 @@
   }
 }
 
-
-
-
-
-.slider_container{
+.slider{
   margin-bottom:100px;
+  .inner{
+    padding: 0 6px;
+  }
+  .percentBox{
+    width:350px;
+    height:50px;
+    border-radius:5px;
+    border:1px solid black;
+    position: relative;
+    &:before{
+      content: '%';
+      position: absolute;
+      top:50%;
+      transform: translateY(-50%);
+      right:5%;
+      color:#9e9d9d;
+    }
+  }
+  .number{
+    right:20%;
+    font-weight: 700;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+  }
+  .progress{
+    margin-top:25px;
+    width:350px;
+    height: 3px;
+    background: #d6d4d4;
+    position: relative;
+    &Bar{
+      position:absolute;
+      background: #05c9a8;
+      height: 3px;
+      left:0;
+      top:50%;
+      transform:translateY(-50%);
+      border-radius: 0;
+    }
+    .spotWrap{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      span{
+        border-radius: 50%;
+        width: 12px;
+        height:12px;
+        font-size:0;
+        background: #d6d4d4;
+        &.active{
+          background: #05c9a8;
+        }
+      }
+    }
+  }
+  .controller{
+    position: absolute;
+    top:50%;
+    border-radius: 50%;
+    transform:translate(-50%,-50%);
+    font-size:0;
+    width: 20px;
+    border: 3px solid #fff;
+    height:20px;
+    background: #05c9a8;
+    left:0%;
+    box-shadow: -1px 1px 0px #dddddd;
+  }
+
+  .spot{
+    &25{
+      left:25%;
+    }
+    &50{
+      left:50%;
+    }
+    &75{
+      left:75%;
+    }
+    &100{
+      left:100%;
+    }
+  }
+  .percent{
+    width:356px;
+    margin : 0 -9px;
+    display:flex;
+    justify-content: space-between;
+    padding-top:20px;
+    span{
+      width:37px;
+      border-radius:10px;
+      padding:3px 0;
+      text-align: center;
+      background:#e9e7e7;
+      display:block;
+      font-size:10px;
+      color:#7c7b7b;
+      cursor: pointer;
+    }
+    .spot25{
+      transform: translateX(-10%);
+    }
+    .spot75{
+      transform: translateX(-10%);
+    }
+  }
 }
-.slider_container .inner{
-  padding: 0 6px;
-}
-.percent_box{ 
-  width:350px;
-  height:50px;
-  border-radius:5px;
-  border:1px solid black;
-  position: relative;
-}
-.percent_box .number{
-  right:20%;
-  font-weight: 700;
-  position: absolute;
-  top:50%;
-  transform: translateY(-50%);
-}
-.percent_box:before{
-  content: '%';
-  position: absolute;
-  top:50%;
-  transform: translateY(-50%);
-  right:5%;
-  color:#9e9d9d;
-}
-.progress{
-  margin-top:25px;
-  width:340px;
-  height: 3px;
-  background: #d6d4d4;
-  position: relative;
-}
-.progress > *{
-  border-radius: 50%;
-  position: absolute;
-  top:50%;
-  transform:translate(-50%,-50%);
-}
-.progress span{
-  width: 12px;
-  height:12px;
-  font-size:0;
-  background: #d6d4d4;
-}
-.progress span.active{
-  background: #05c9a8;
-}
-.progress_bar{
-  position:absolute;
-  background: #05c9a8;
-  height: 3px;
-  left:0;
-  transform:translateY(-50%);
-  border-radius: 0;
-}
-.progress .controller{
-  position: absolute;
-  font-size:0;
-  width: 20px;
-  border: 3px solid #fff;
-  height:20px;
-  background: #05c9a8;
-  left:0%;
-  box-shadow: -1px 1px 0px #dddddd;
-}
-.spot_25{
-  left:25%;
-}
-.spot_50{
-  left:50%;
-}
-.spot_75{
-  left:75%;
-}
-.spot_100{
-  left: 100%;
-}
-.percent{
-  width:356px;
-  margin : 0 -9px;
-  display:flex;
-  justify-content: space-between;
-  padding-top:20px;
-}
-.percent span{
-   width:37px;
-   border-radius:10px;
-   padding:3px 0;
-   text-align: center;
-   background:#e9e7e7;
-   display:block;
-   font-size:10px;
-   color:#7c7b7b;
-   cursor: pointer;
-}
-.percent .spot_25{
-  transform: translateX(-10%);
-} 
-.percent .spot_75{
-  transform: translateX(10%);
-} 
-.input{
+.login{
   margin-bottom:100px;
+  width:300px;
   .inputBox{
     margin-bottom:20px;
-    width:250px;
+    position: relative;
   }
   input{
     position: relative;
     width:100%; 
-    padding:10px 40px 10px 10px; 
+    padding:10px 50px 10px 10px; 
     border:1px solid #292828; 
     border-radius: 3px;
   }
@@ -197,16 +209,13 @@
     top:50%;
     transform:translateY(-50%);
     right: 20px;
-    font-size:0;
-    background: no-repeat center/100%;
   }
   .iconCheck{
-    opacity: 0.4;
-    width:15px;
-    height:15px;
-    // background-image: url('./images/circle-check-solid.svg');
+    color:lightgray;
+    width:25px;
+    height:25px;
     &.checked{
-      opacity: 1;
+      color:rgb(36, 228, 36);
     }
   }
   .iconView{
@@ -220,7 +229,6 @@
 }
 
 // dropDown
-
 .drop_down_container{
   width:250px;
 }

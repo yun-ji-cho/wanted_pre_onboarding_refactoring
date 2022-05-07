@@ -1,18 +1,21 @@
 import Toggle from './Toggle'
 import Tab from './Tab'
-// import Slider from './Slider';
-// import Input from './Input';
+import Login from './Login'
+import Slider from './Slider'
+import styles from './Components.module.scss'
+
+// import Slider from './Slider'
 
 // import Dropdown from './Dropdown';
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Toggle />
       <Tab />
-      {/* <Slider />
-      <Input />
-      <Dropdown /> */}
+      <Login />
+      <Slider />
+      {/* <Dropdown /> */}
     </div>
   )
 }
