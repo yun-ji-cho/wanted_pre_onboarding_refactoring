@@ -74,11 +74,30 @@
 
 .slider{
   margin-bottom:100px;
+  width:350px;
+  position: relative;
+  input[type=range]{
+    width:100%;
+    height:1px;
+    z-index: 98;
+    position:absolute;
+    background: #d6d4d4;
+    height: 2px;
+    &::-webkit-slider-thumb{
+      -webkit-appearance: none; 
+      background: #05c9a8;
+      cursor: pointer; 
+      box-shadow: -1px 1px 0px #dddddd;
+      width: 16px;
+      height:16px;
+      border-radius: 50px;
+    }
+  }
   .inner{
-    padding: 0 6px;
+    margin-top: 20px;
+    position: relative;
   }
   .percentBox{
-    width:350px;
     height:50px;
     border-radius:5px;
     border:1px solid black;
@@ -99,52 +118,35 @@
     top:50%;
     transform: translateY(-50%);
   }
-  .progress{
-    margin-top:25px;
-    width:340px;
-    height: 3px;
-    background: #d6d4d4;
-    position: relative;
-    &Bar{
-      position:absolute;
-      background: #05c9a8;
-      height: 3px;
-      left:0;
+  .spotWrap{
+    width: calc(100% - 12px);
+    position:absolute;
+    top:76%;
+    margin: 0 6px;
+    span{
+      
+      border-radius: 50%;
+      width: 12px;
+      height:12px;
+      font-size:0;
+      background: #d6d4d4;
+      position: absolute;
       top:50%;
-      transform:translateY(-50%);
-      border-radius: 0;
-    }
-    .spotWrap{
-      width: 100%;
-      height: 100%;
-      position:absolute;
-      span{
-        border-radius: 50%;
-        width: 12px;
-        height:12px;
-        font-size:0;
-        background: #d6d4d4;
-        position: absolute;
-        top:50%;
-        transform: translate(-50%,-50%);
-        &.active{
-          background: #05c9a8;
-        }
+      transform: translate(-50%,-50%);
+      &.active{
+        background: #05c9a8;
+        pointer-events: none;
       }
     }
   }
-  .controller{
+  .progressBar{
     position: absolute;
-    top:50%;
-    border-radius: 50%;
-    transform:translate(-50%,-50%);
-    font-size:0;
-    width: 20px;
-    border: 3px solid #fff;
-    height:20px;
     background: #05c9a8;
-    left:0%;
-    box-shadow: -1px 1px 0px #dddddd;
+    left: 1px;
+    width: 100%;
+    height: 2px;
+    z-index: 99;
+    pointer-events: none;
   }
 
   .spot{
@@ -165,8 +167,7 @@
     }
   }
   .buttonWrap{
-    width:356px;
-    margin : 0 -9px;
+    width:350px;
     display:flex;
     justify-content: space-between;
     padding-top:20px;
@@ -181,10 +182,10 @@
       color:#7c7b7b;
       cursor: pointer;
       &.spot25{
-        transform: translateX(-10%);
+        transform: translateX(-6px);
       }
       &.spot75{
-        transform: translateX(10%);
+        transform: translateX(6px);
       }
     }
   }
@@ -233,66 +234,66 @@
 }
 
 // dropDown
-.drop_down_container{
-  width:250px;
-}
-.drop_down_container .icon{
-  position: relative;
-}
-.drop_down_container .icon:before{
-  content:'';
-  position: absolute;
-  top:50%;
-  transform: translateY(-50%);
-}
-.current{
-  position: relative;
-  width:100%;
-  height:40px;
-  border:1px solid black;
-  text-align: left;
-  padding:5px 10px;
+// .drop_down_container{
+//   width:250px;
+// }
+// .drop_down_container .icon{
+//   position: relative;
+// }
+// .drop_down_container .icon:before{
+//   content:'';
+//   position: absolute;
+//   top:50%;
+//   transform: translateY(-50%);
+// }
+// .current{
+//   position: relative;
+//   width:100%;
+//   height:40px;
+//   border:1px solid black;
+//   text-align: left;
+//   padding:5px 10px;
 
-}
-.current:before{
-  // background: url('./images/caret-down-solid.svg') no-repeat center/100%;
-  right: 5%;
-  width:10px;
-  height:10px;
-}
-.search_box{
-  margin-top:5px;
-}
-.search_box input{
-  width:100%;
-  height:40px;
-  font-size:16px;
-  padding: 5px 10px 5px 40px;
-}
-.search_box input::placeholder{
-  color:rgb(185, 183, 183);
-}
-.search_box:before{
-  // background: url('./images/magnifying-glass-solid.svg') no-repeat center/100%;
-  left: 5%;
-  width:15px;
-  height:15px;
-  opacity: 0.3;
-}
-.list_wrap{
-  display:none;
-}
-.list_wrap.active{
-  display:block;
-}
-.list{
-  border:1px solid #000;
-  border-top:none;
-}
-.list li{
-  padding:10px;
-  cursor: pointer;
-}
-.list li:hover{
-  background: rgb(241, 241, 241);
-}
+// }
+// .current:before{
+//   // background: url('./images/caret-down-solid.svg') no-repeat center/100%;
+//   right: 5%;
+//   width:10px;
+//   height:10px;
+// }
+// .search_box{
+//   margin-top:5px;
+// }
+// .search_box input{
+//   width:100%;
+//   height:40px;
+//   font-size:16px;
+//   padding: 5px 10px 5px 40px;
+// }
+// .search_box input::placeholder{
+//   color:rgb(185, 183, 183);
+// }
+// .search_box:before{
+//   // background: url('./images/magnifying-glass-solid.svg') no-repeat center/100%;
+//   left: 5%;
+//   width:15px;
+//   height:15px;
+//   opacity: 0.3;
+// }
+// .list_wrap{
+//   display:none;
+// }
+// .list_wrap.active{
+//   display:block;
+// }
+// .list{
+//   border:1px solid #000;
+//   border-top:none;
+// }
+// .list li{
+//   padding:10px;
+//   cursor: pointer;
+// }
+// .list li:hover{
+//   background: rgb(241, 241, 241);
+// }
